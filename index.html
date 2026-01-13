@@ -193,29 +193,32 @@
         /* --- HERO SECTION --- */
         #inicio {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/4RxGjnmc/1a8a8984-150f-4066-80f7-c35368682fa1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: var(--color-bg) url('https://i.ibb.co/qVsKxmf/Generated-Image-January-12-2026-4-20-PM.png') no-repeat;
+            background-size: min(600px, 80vw);
+            background-position: center 20%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end; /* Alinea el contenido abajo */
             text-align: center;
-            color: var(--color-white);
-            padding-top: 80px;
+            color: var(--color-text);
+            padding: 120px 20px 80px;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 20px;
-            animation: fadeIn Up 1s ease-out;
+            animation: fadeInUp 1s ease-out;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 15px;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            color: var(--color-white);
+            text-shadow: none;
+            color: var(--color-text);
         }
 
         .hero-content p {
@@ -547,6 +550,16 @@
 
         /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
+            #inicio {
+                background-position: center 25%; /* Sube un poco más el logo en móvil */
+                padding: 100px 15px 60px; /* Aumenta el padding inferior */
+            }
+
+            .hero-content {
+                padding: 20px;
+                width: 100%;
+            }
+
             .hero-content h1 { font-size: 2.5rem; }
             
             .hamburger { display: block; color: var(--color-text); }
@@ -679,27 +692,67 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art1/400/400" alt="Trabajo manual 1">
+                    <img src="https://i.ibb.co/vxxMqYSy/8d6df3df-8fae-43e1-9cba-50801ed68a6e.jpg" alt="Trabajo manual 1">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art2/400/500" alt="Trabajo manual 2">
+                    <img src="https://i.ibb.co/fVKvRc6P/2c051ddf-a458-4386-9b6e-83332ebf5306.jpg" alt="Trabajo manual 2">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art3/400/400" alt="Trabajo manual 3">
+                    <img src="https://i.ibb.co/6JLNZSF3/785bc9d0-a068-4497-8eed-62b593820813.jpg" alt="Trabajo manual 3">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art4/400/500" alt="Trabajo manual 4">
+                    <img src="https://i.ibb.co/PsdwQ4mP/252da247-1728-4f0b-a924-02d5e6486fe3.jpg" alt="Trabajo manual 4">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art5/400/400" alt="Trabajo manual 5">
+                    <img src="https://i.ibb.co/0jd6z2QD/7239f7b8-1400-4dc3-b6cb-b625fecb3795.jpg" alt="Trabajo manual 5">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
                 <div class="gallery-item reveal">
-                    <img src="https://picsum.photos/seed/art6/400/500" alt="Trabajo manual 6">
+                    <img src="https://i.ibb.co/39FKgxkZ/1262abfa-9fe8-4e47-a829-217e67aceb52.jpg" alt="Trabajo manual 6">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/1Nkmmfk/37008bdb-6fef-470e-9f12-bc146c2cbecb.jpg" alt="Trabajo manual 7">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/Q3mhphLJ/c007a4e8-8e61-4ab8-bf16-2da989c28cfa.jpg" alt="Trabajo manual 8">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/j9tWLQb9/c48c8204-c29c-45fb-914c-ef83357e76b3.jpg" alt="Trabajo manual 9">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/mrH4F31x/c8752f63-8132-4da7-9159-63419169d766.jpg" alt="Trabajo manual 10">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/zhTLWJfr/d9dc4c6a-8321-4e16-84d5-702902cb7f06.jpg" alt="Trabajo manual 11">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/PsjjKcLM/d4a0a62c-80b8-4e8b-b107-a0a8e41585d8.jpg" alt="Trabajo manual 12">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/8Dcz89pJ/e1ca64ab-ab02-4190-a027-ce1ac91bd456.jpg" alt="Trabajo manual 13">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/fgBBwxh/e9d00d9a-0a72-4a94-b48f-54436ea94b1f.jpg" alt="Trabajo manual 14">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/Q7SfgyDB/eb78a8c5-b9bf-4a0f-a287-b714e8b5e4d2.jpg" alt="Trabajo manual 15">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://i.ibb.co/9mwVCfCj/f7620ff3-99bb-4fed-ad04-04fad80822ab.jpg" alt="Trabajo manual 16">
                     <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
                 </div>
             </div>
