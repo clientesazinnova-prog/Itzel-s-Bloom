@@ -828,35 +828,54 @@
             // Disparar una vez al cargar para verificar elementos ya visibles
             revealOnScroll();
 
-            // 3. Manejo del Formulario de Contacto
+            // 3. Manejo del Formulario de Contacto para WhatsApp
             const contactForm = document.getElementById('contactForm');
             const toast = document.getElementById('toast');
 
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Simulación de envío (Aquí iría la lógica de backend/AJAX)
-                const btn = contactForm.querySelector('button');
-                const originalText = btn.innerText;
-                
-                btn.innerText = 'Enviando...';
-                btn.disabled = true;
 
-                setTimeout(() => {
-                    // Resetear formulario
-                    contactForm.reset();
-                    btn.innerText = originalText;
-                    btn.disabled = false;
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
 
-                    // Mostrar Toast
-                    showToast();
-                }, 1500);
+                if (!name || !email || !message) {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+
+                // Formatear el mensaje para WhatsApp
+                const whatsappMessage = `¡Hola! 👋 Mi nombre es ${name}.\n\n*Correo:* ${email}\n\n*Mensaje:*\n${message}`;
+
+                // Codificar el mensaje para la URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+
+                // Número de teléfono (sin el '+')
+                const phoneNumber = '525540961130';
+
+                // Construir la URL de WhatsApp
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+                // Abrir WhatsApp en una nueva pestaña
+                window.open(whatsappURL, '_blank');
+
+                // Mostrar notificación y resetear el formulario
+                showToast();
+                contactForm.reset();
             });
 
             function showToast() {
+                // Cambiamos el mensaje del toast para que sea más apropiado
+                const toastMessage = toast.querySelector('span');
+                toastMessage.innerText = '¡Serás redirigido a WhatsApp!';
+
                 toast.classList.add('show');
                 setTimeout(() => {
                     toast.classList.remove('show');
+                    // Restauramos el mensaje original por si se usa en otro lado
+                    setTimeout(() => {
+                         toastMessage.innerText = '¡Mensaje enviado correctamente!';
+                    }, 500);
                 }, 4000);
             }
 
