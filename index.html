@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itzel’s Bloom | Manualidades Artesanales</title>
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES CSS & RESET --- */
+        :root {
+            --color-primary: #e6b8b8; /* Rosa Pastel */
+            --color-secondary: #8fbc8f; /* Verde Salvia */
+            --color-bg: #fdfbf7; /* Crema muy suave */
+            --color-white: #ffffff;
+            --color-text: #4a4a4a; /* Gris oscuro para texto */
+            --color-text-light: #7a7a7a;
+            --color-accent: #d4a5a5;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 25px rgba(0,0,0,0.1);
+            
+            --transition: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-text);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- UTILIDADES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--color-secondary);
+            animation: gentle-pulse 3s infinite ease-in-out;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- HERO SECTION --- */
+        #inicio {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/crafts1/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn Up 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- SOBRE NOSOTROS --- */
+        #nosotros {
+            background-color: var(--color-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--color-text-light);
+        }
+
+        /* --- PRODUCTOS --- */
+        #productos {
+            background-color: var(--color-bg);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            display: block;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- GALERÍA --- */
+        #galeria {
+            background-color: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(230, 184, 184, 0.8); /* Tinte primario */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay i {
+            color: var(--color-white);
+            font-size: 2rem;
+            transform: scale(0);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CONTACTO --- */
+        #contacto {
+            background-color: var(--color-bg);
+            position: relative;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            background: var(--color-white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(143, 188, 143, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(230, 184, 184, 0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* --- NOTIFICACIÓN TOAST --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(150%);
+            transition: transform 0.4s ease-out;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes gentle-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            
+            .hamburger { display: block; color: var(--color-text); }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow-md);
+                clip-path: circle(0% at 100% 0);
+                transition: all 0.5s ease-in-out;
+            }
+
+            .nav-links.nav-active {
+                clip-path: circle(150% at 100% 0);
+            }
+
+            .about-grid { grid-template-columns: 1fr; }
+            
+            .contact-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-seedling"></i> Itzel’s Bloom
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio">
+        <div class="hero-content">
+            <h1>Creamos Belleza con Nuestras Manos</h1>
+            <p>Detalles personalizados que llenan de vida y calidez tus espacios especiales.</p>
+            <a href="#productos" class="btn">Ver Productos</a>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nuestra Historia</h2>
+            </div>
+            <div class="about-grid reveal">
+                <div class="about-text">
+                    <h3>Arte, Pasión y Detalle</h3>
+                    <p>Itzel’s Bloom nació de la idea de que las cosas hechas a mano tienen un alma. Lo que comenzó como un pequeño hobby en la sala de casa, hoy es un taller lleno de creatividad dedicado a transformar materiales simples en piezas únicas.</p>
+                    <p>Nos enfocamos en la calidad de los acabados y en la personalización. Cada flor, cada tarjeta y cada decoración es tratada con la dedicación que mereces, asegurando que recibas un producto que no solo sea bello, sino duradero y significativo.</p>
+                    <a href="#contacto" class="btn" style="background-color: var(--color-secondary)">Conócenos más</a>
+                </div>
+                <div class="about-img">
+                    <!-- Imagen de taller/artesanal -->
+                    <img src="https://picsum.photos/seed/craftswork/600/400" alt="Taller artesanal de Itzel's Bloom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Nuestras Creaciones</h2>
+                <p>Explora nuestra selección de manualidades listas para llevar o por encargo.</p>
+            </div>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <article class="product-card reveal">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/seed/flowers/400/300" alt="Ramos de Papel">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ramos Eternos</h3>
+                        <p>Hermosas flores elaboradas con papel crepé y alambre, diseñadas para durar para siempre.</p>
+                        <span class="price">Desde $25.00</span>
+                        <a href="#contacto" class="btn">Pedir Ahora</a>
+                    </div>
+                </article>
+                <!-- Producto 2 -->
+                <article class="product-card reveal">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/seed/scrapbook/400/300" alt="Cajas Sorpresa">
+                    </div>
+                    <div class="card-content">
+                        <h3>Cajas Sorpresa</h3>
+                        <p>Cajas personalizadas para regalar, llenas de detalles y dulces. Ideales para cumpleaños.</p>
+                        <span class="price">Desde $35.00</span>
+                        <a href="#contacto" class="btn">Pedir Ahora</a>
+                    </div>
+                </article>
+                <!-- Producto 3 -->
+                <article class="product-card reveal">
+                    <div class="card-img">
+                        <img src="https://picsum.photos/seed/decor/400/300" alt="Decoración de Eventos">
+                    </div>
+                    <div class="card-content">
+                        <h3>Decoración de Mesa</h3>
+                        <p>Centros de mesa y detalles para bautizos, bodas y eventos sociales.</p>
+                        <span class="price">Cotizar</span>
+                        <a href="#contacto" class="btn">Pedir Ahora</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Galería de Inspiración</h2>
+                <p>Un vistazo a nuestro trabajo diario y la felicidad de nuestros clientes.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art1/400/400" alt="Trabajo manual 1">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art2/400/500" alt="Trabajo manual 2">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art3/400/400" alt="Trabajo manual 3">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art4/400/500" alt="Trabajo manual 4">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art5/400/400" alt="Trabajo manual 5">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+                <div class="gallery-item reveal">
+                    <img src="https://picsum.photos/seed/art6/400/500" alt="Trabajo manual 6">
+                    <div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Contáctanos</h2>
+                <p>¿Tienes una idea en mente? Hagámosla realidad juntos.</p>
+            </div>
+            <div class="contact-container reveal">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p style="margin-bottom: 25px; color: var(--color-text-light);">Estamos listos para asesorarte en tu próximo proyecto artesanal.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Ciudad de México, MX</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hola@itzelsbloom.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+52 55 1234 5678</p>
+                        </div>
+                    </div>
+
+                    <div class="social-icons">
+                        <!-- Solo Facebook y TikTok -->
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" placeholder="tucorreo@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" rows="5" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; border: none;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Itzel’s Bloom</div>
+            <p class="copyright">&copy; 2023 Itzel’s Bloom. Todos los derechos reservados. Hecho con <i class="fa-solid fa-heart" style="color: var(--color-primary)"></i> y dedicación.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-check-circle"></i>
+        <span>¡Mensaje enviado correctamente!</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Menú Móvil Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksItems = document.querySelectorAll('.nav-links li a');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+                // Animación del icono
+                const icon = hamburger.querySelector('i');
+                if (navLinks.classList.contains('nav-active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navLinksItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if(navLinks.classList.contains('nav-active')) {
+                        navLinks.classList.remove('nav-active');
+                        hamburger.querySelector('i').classList.remove('fa-xmark');
+                        hamburger.querySelector('i').classList.add('fa-bars');
+                    }
+                });
+            });
+
+            // 2. Efecto Scroll Reveal (Aparición al hacer scroll)
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+
+                revealElements.forEach((element) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            // Disparar una vez al cargar para verificar elementos ya visibles
+            revealOnScroll();
+
+            // 3. Manejo del Formulario de Contacto
+            const contactForm = document.getElementById('contactForm');
+            const toast = document.getElementById('toast');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simulación de envío (Aquí iría la lógica de backend/AJAX)
+                const btn = contactForm.querySelector('button');
+                const originalText = btn.innerText;
+                
+                btn.innerText = 'Enviando...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    // Resetear formulario
+                    contactForm.reset();
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+
+                    // Mostrar Toast
+                    showToast();
+                }, 1500);
+            });
+
+            function showToast() {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 4000);
+            }
+
+            // 4. Cambio de estilo del Header al hacer scroll
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
