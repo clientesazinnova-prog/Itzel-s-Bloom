@@ -193,29 +193,32 @@
         /* --- HERO SECTION --- */
         #inicio {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/4RxGjnmc/1a8a8984-150f-4066-80f7-c35368682fa1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: var(--color-bg) url('https://i.ibb.co/qVsKxmf/Generated-Image-January-12-2026-4-20-PM.png') no-repeat;
+            background-size: min(600px, 80vw);
+            background-position: center 20%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end; /* Alinea el contenido abajo */
             text-align: center;
-            color: var(--color-white);
-            padding-top: 80px;
+            color: var(--color-text);
+            padding: 120px 20px 80px;
         }
 
         .hero-content {
             max-width: 800px;
-            padding: 20px;
-            animation: fadeIn Up 1s ease-out;
+            animation: fadeInUp 1s ease-out;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 15px;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            color: var(--color-white);
+            text-shadow: none;
+            color: var(--color-text);
         }
 
         .hero-content p {
@@ -547,6 +550,16 @@
 
         /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
+            #inicio {
+                background-position: center 25%; /* Sube un poco más el logo en móvil */
+                padding: 100px 15px 60px; /* Aumenta el padding inferior */
+            }
+
+            .hero-content {
+                padding: 20px;
+                width: 100%;
+            }
+
             .hero-content h1 { font-size: 2.5rem; }
             
             .hamburger { display: block; color: var(--color-text); }
