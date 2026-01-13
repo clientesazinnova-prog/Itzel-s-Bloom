@@ -14,7 +14,7 @@
     <style>
         /* --- VARIABLES CSS & RESET --- */
         :root {
-            --color-primary: #e6b8b8; /* Rosa Pastel */
+            --color-primary: #FF1493; /* Rosa Fuerte */
             --color-secondary: #8fbc8f; /* Verde Salvia */
             --color-bg: #fdfbf7; /* Crema muy suave */
             --color-white: #ffffff;
@@ -193,7 +193,7 @@
         /* --- HERO SECTION --- */
         #inicio {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/crafts1/1920/1080');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i.ibb.co/4RxGjnmc/1a8a8984-150f-4066-80f7-c35368682fa1.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -215,6 +215,7 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: var(--color-white);
         }
 
         .hero-content p {
@@ -621,7 +622,7 @@
                 </div>
                 <div class="about-img">
                     <!-- Imagen de taller/artesanal -->
-                    <img src="https://picsum.photos/seed/craftswork/600/400" alt="Taller artesanal de Itzel's Bloom">
+                    <img src="https://i.ibb.co/4RxGjnmc/1a8a8984-150f-4066-80f7-c35368682fa1.jpg" alt="Taller artesanal de Itzel's Bloom">
                 </div>
             </div>
         </div>
@@ -643,8 +644,6 @@
                     <div class="card-content">
                         <h3>Ramos Eternos</h3>
                         <p>Hermosas flores elaboradas con papel crepé y alambre, diseñadas para durar para siempre.</p>
-                        <span class="price">Desde $25.00</span>
-                        <a href="#contacto" class="btn">Pedir Ahora</a>
                     </div>
                 </article>
                 <!-- Producto 2 -->
@@ -655,8 +654,6 @@
                     <div class="card-content">
                         <h3>Cajas Sorpresa</h3>
                         <p>Cajas personalizadas para regalar, llenas de detalles y dulces. Ideales para cumpleaños.</p>
-                        <span class="price">Desde $35.00</span>
-                        <a href="#contacto" class="btn">Pedir Ahora</a>
                     </div>
                 </article>
                 <!-- Producto 3 -->
@@ -667,8 +664,6 @@
                     <div class="card-content">
                         <h3>Decoración de Mesa</h3>
                         <p>Centros de mesa y detalles para bautizos, bodas y eventos sociales.</p>
-                        <span class="price">Cotizar</span>
-                        <a href="#contacto" class="btn">Pedir Ahora</a>
                     </div>
                 </article>
             </div>
@@ -734,23 +729,15 @@
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
                         <div>
-                            <h4>Email</h4>
-                            <p>hola@itzelsbloom.com</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p>+52 55 1234 5678</p>
+                            <h4>Gmail</h4>
+                            <p>gaistardoitzel@gmail.com</p>
                         </div>
                     </div>
 
                     <div class="social-icons">
                         <!-- Solo Facebook y TikTok -->
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61586218450228"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@itzels.bloom?_r=1&_t=ZS-931azpCjqjP"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
 
@@ -841,35 +828,54 @@
             // Disparar una vez al cargar para verificar elementos ya visibles
             revealOnScroll();
 
-            // 3. Manejo del Formulario de Contacto
+            // 3. Manejo del Formulario de Contacto para WhatsApp
             const contactForm = document.getElementById('contactForm');
             const toast = document.getElementById('toast');
 
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Simulación de envío (Aquí iría la lógica de backend/AJAX)
-                const btn = contactForm.querySelector('button');
-                const originalText = btn.innerText;
-                
-                btn.innerText = 'Enviando...';
-                btn.disabled = true;
 
-                setTimeout(() => {
-                    // Resetear formulario
-                    contactForm.reset();
-                    btn.innerText = originalText;
-                    btn.disabled = false;
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
 
-                    // Mostrar Toast
-                    showToast();
-                }, 1500);
+                if (!name || !email || !message) {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+                
+                // Formatear el mensaje para WhatsApp
+                const whatsappMessage = `¡Hola! 👋 Mi nombre es ${name}.\n\n*Correo:* ${email}\n\n*Mensaje:*\n${message}`;
+                
+                // Codificar el mensaje para la URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                
+                // Número de teléfono (sin el '+')
+                const phoneNumber = '525540961130';
+                
+                // Construir la URL de WhatsApp
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                
+                // Abrir WhatsApp en una nueva pestaña
+                window.open(whatsappURL, '_blank');
+                
+                // Mostrar notificación y resetear el formulario
+                showToast();
+                contactForm.reset();
             });
 
             function showToast() {
+                // Cambiamos el mensaje del toast para que sea más apropiado
+                const toastMessage = toast.querySelector('span');
+                toastMessage.innerText = '¡Serás redirigido a WhatsApp!';
+
                 toast.classList.add('show');
                 setTimeout(() => {
                     toast.classList.remove('show');
+                    // Restauramos el mensaje original por si se usa en otro lado
+                    setTimeout(() => {
+                         toastMessage.innerText = '¡Mensaje enviado correctamente!';
+                    }, 500);
                 }, 4000);
             }
 
