@@ -594,9 +594,187 @@
             
             .contact-container { padding: 30px 20px; }
         }
+
+        /* --- PANTALLA DE MANTENIMIENTO --- */
+        body {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #maintenance-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100vw;
+            background-color: var(--color-bg);
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            overflow-y: auto;
+        }
+
+        .maintenance-card {
+            background-color: var(--color-white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .maintenance-logo {
+            margin-bottom: 25px;
+        }
+
+        .maintenance-logo i {
+            font-size: 3.5rem;
+            color: var(--color-secondary);
+            animation: gentle-pulse 2.5s infinite ease-in-out;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .maintenance-logo h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        #maintenance-screen h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        #maintenance-screen p {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        #maintenance-screen .sub-message {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .maintenance-socials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--color-white);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            min-width: 150px;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-btn.facebook {
+            background-color: #1877F2;
+        }
+
+        .social-btn.facebook:hover {
+            background-color: #1565C0;
+        }
+
+        .social-btn.tiktok {
+            background-color: #000000;
+        }
+
+        .social-btn.tiktok:hover {
+            background-color: #333333;
+        }
+
+        .social-btn.whatsapp {
+            background-color: #25D366;
+        }
+
+        .social-btn.whatsapp:hover {
+            background-color: #1BD741;
+        }
+
+        @media (max-width: 480px) {
+            .maintenance-card {
+                padding: 30px 20px;
+            }
+
+            .maintenance-logo h1 {
+                font-size: 1.8rem;
+            }
+
+            #maintenance-screen h2 {
+                font-size: 1.5rem;
+            }
+
+            .maintenance-socials {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .social-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Pantalla de Mantenimiento -->
+    <div id="maintenance-screen">
+        <div class="maintenance-card">
+            <div class="maintenance-logo">
+                <i class="fa-solid fa-seedling"></i>
+                <h1>Itzel’s Bloom</h1>
+            </div>
+            <h2>Página en Mantenimiento</h2>
+            <p>Estamos trabajando para mejorar tu experiencia. Muy pronto estaremos de regreso con nuevos e increíbles detalles artesanales hechos con amor.</p>
+            <p class="sub-message">Mientras tanto, puedes seguir contactándonos y ver nuestros trabajos a través de nuestras redes oficiales:</p>
+            <div class="maintenance-socials">
+                <a href="https://www.facebook.com/profile.php?id=61586218450228" target="_blank" class="social-btn facebook" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.tiktok.com/@itzels.bloom?_r=1&_t=ZS-931azpCjqjP" target="_blank" class="social-btn tiktok" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i> TikTok
+                </a>
+                <a href="https://wa.me/525540961130" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido del sitio oculto durante mantenimiento -->
+    <div id="site-content" style="display: none;" aria-hidden="true">
 
     <!-- Navegación -->
     <header>
@@ -994,6 +1172,8 @@
         <i class="fa-solid fa-check-circle"></i>
         <span>¡Mensaje enviado correctamente!</span>
     </div>
+
+    </div> <!-- Fin de site-content -->
 
     <!-- JavaScript -->
     <script>
